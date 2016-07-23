@@ -18,15 +18,15 @@ public class TestApp {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(new Person(null, "John", new ContactDetails(null, "222", "phone")));
+        entityManager.persist(new Person(null, "John", new ContactDetails(null, "mail@mail.xy", "phone")));
         entityManager.getTransaction().commit();
 
 
 
-        List<ContactDetails> resultsc1 = entityManager
-                .createQuery("Select a from ContactDetails a", ContactDetails.class)
+        List<Person> persons = entityManager
+                .createQuery("Select a from Person a", Person.class)
                 .getResultList();
-        List<ContactDetails> resultsc2 = entityManager
+        List<ContactDetails> contacts = entityManager
                 .createQuery("Select a from ContactDetails a", ContactDetails.class)
                 .getResultList();
 
